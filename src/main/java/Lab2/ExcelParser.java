@@ -15,7 +15,7 @@ import java.io.IOException;
 public class ExcelParser {
 
     public static Map<Integer, List<Double>> parse(String fileName, int sheetNumber) throws IOException {
-        FileInputStream file = new FileInputStream(new File(fileName));
+        FileInputStream file = new FileInputStream(fileName);
         Workbook workbook = new XSSFWorkbook(file);
         Sheet sheet = workbook.getSheetAt(sheetNumber);
         Map<Integer, List<Double>> data = new HashMap<>();
