@@ -7,6 +7,5 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println(ExcelParser.parse("C:\\Users\\SystemX\\Downloads\\ДЗ4.xlsx",0));
-
     }
 }
