@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ExcelCreator {
 
-    public void writeSamplesToExcel(List<Sample> samples, String filePath) {
+    public static void writeSamplesToExcel(List<Sample> samples, String filePath) {
         try (Workbook workbook = new XSSFWorkbook()) {
 
             Sheet sheet1 = workbook.createSheet("Лист 1");
@@ -26,7 +26,7 @@ public class ExcelCreator {
         }
     }
 
-    private void writeSampleResults(Sheet sheet, List<Sample> samples) {
+    private static void writeSampleResults(Sheet sheet, List<Sample> samples) {
         Row headerRow = sheet.createRow(0);
         headerRow.createCell(0).setCellValue("Номер выборки");
         String[] headers = {"Геометрическое среднее", "Арифметическое среднее", "Стандартное отклонение", "Размах", "Количество элементов", "Коэффициент вариации", "Нижняя граница доверительного интервала", "Верхняя граница доверительного интервала", "Дисперсия", "Минимальное значение", "Максимальное значение"};
@@ -46,7 +46,7 @@ public class ExcelCreator {
         }
     }
 
-    private void writeCovarianceMatrix(Sheet sheet, List<Sample> samples) {
+    private static void writeCovarianceMatrix(Sheet sheet, List<Sample> samples) {
 
         Row headerRow = sheet.createRow(0);
         headerRow.createCell(0).setCellValue("Номер выборки");

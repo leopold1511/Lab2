@@ -55,9 +55,7 @@ public class GUI extends JFrame {
                     File saveFile = saveFileChooser.getSelectedFile();
                     String saveFilePath = saveFile.getAbsolutePath().concat(".xlsx");
 
-                    List<Sample> samples1 = ExcelParser.parse(filePath, sheetNumber);
-                    ExcelCreator writer = new ExcelCreator();
-                    writer.writeSamplesToExcel(samples1, saveFilePath);
+                    ExcelCreator.writeSamplesToExcel(ExcelParser.parse(filePath, sheetNumber), saveFilePath);
 
                     JOptionPane.showMessageDialog(GUI.this, "Excel file generated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -68,8 +66,11 @@ public class GUI extends JFrame {
             else
                 JOptionPane.showMessageDialog(GUI.this, "Choose file and sheet number first", "Error", JOptionPane.ERROR_MESSAGE);
         });
+
+        exitButton.addActionListener(e -> System.exit(0));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+
     }
 
     private void initComponents() {
@@ -81,6 +82,7 @@ public class GUI extends JFrame {
         sheetField = new JTextField();
         fileErrorLabel = new JLabel();
         sheetErrorLabel = new JLabel();
+        exitButton = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -100,21 +102,25 @@ public class GUI extends JFrame {
         //---- sheetErrorLabel ----
         sheetErrorLabel.setText("Sheet isn't choosen");
 
+        //---- exitButton ----
+        exitButton.setText("EXIT");
+
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
-                .addGroup(contentPaneLayout.createSequentialGroup()
+                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                     .addGap(25, 25, 25)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addComponent(chooseFileButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(generateExcelButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(sheetField)
-                        .addComponent(chooseSheetNumberButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(chooseSheetNumberButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(generateExcelButton, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(sheetField, GroupLayout.Alignment.TRAILING))
                     .addGap(18, 18, 18)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addComponent(fileErrorLabel)
-                        .addComponent(sheetErrorLabel))
+                        .addComponent(sheetErrorLabel)
+                        .addComponent(exitButton, GroupLayout.PREFERRED_SIZE, 123, GroupLayout.PREFERRED_SIZE))
                     .addGap(10, 10, 10))
         );
         contentPaneLayout.setVerticalGroup(
@@ -129,9 +135,11 @@ public class GUI extends JFrame {
                         .addComponent(sheetErrorLabel))
                     .addGap(18, 18, 18)
                     .addComponent(sheetField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(generateExcelButton, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-                    .addGap(34, 34, 34))
+                    .addGap(30, 30, 30)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(generateExcelButton, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(exitButton, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
+                    .addGap(22, 22, 22))
         );
         pack();
         setLocationRelativeTo(getOwner());
@@ -146,5 +154,6 @@ public class GUI extends JFrame {
     private JTextField sheetField;
     private JLabel fileErrorLabel;
     private JLabel sheetErrorLabel;
+    private JButton exitButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

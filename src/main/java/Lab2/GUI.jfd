@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :25:25:p, par l {comp chooseFileButton::l:::x, comp generateExcelButton::l:::x, comp sheetField::l:::x, comp chooseSheetNumberButton::l:::x}, space s:::p, par l {comp fileErrorLabel:::p::p, comp sheetErrorLabel:::p::p}, space :p:10:p}}"
-			"$verticalGroup": "par l {seq {par b {comp chooseFileButton::b:p:48:p, comp fileErrorLabel::b:p::p}, space s:::p, par b {comp chooseSheetNumberButton::b::54:x, comp sheetErrorLabel::b:p::p}, space s:::p, comp sheetField:::p::p, space s:::p, comp generateExcelButton:::p:43:p, space :p:34:p}}"
+			"$horizontalGroup": "par l {seq t {space :25:25:p, par l {comp chooseFileButton::l:::x, comp chooseSheetNumberButton::l:::x, comp generateExcelButton::t:::x, comp sheetField::t:::x}, space s:::p, par l {comp fileErrorLabel:::p::p, comp sheetErrorLabel:::p::p, comp exitButton::l:p:123:p}, space :p:10:p}}"
+			"$verticalGroup": "par l {seq {par b {comp chooseFileButton::b:p:48:p, comp fileErrorLabel::b:p::p}, space s:::p, par b {comp chooseSheetNumberButton::b::54:x, comp sheetErrorLabel::b:p::p}, space s:::p, comp sheetField:::p::p, space :p:30:p, par b {comp generateExcelButton::b:p:43:p, comp exitButton::b:p:43:p}, space :p:22:p}}"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -30,6 +30,10 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "sheetErrorLabel"
 				"text": "Sheet isn't choosen"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "exitButton"
+				"text": "EXIT"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 125, 0 )
