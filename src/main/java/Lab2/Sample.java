@@ -7,11 +7,9 @@ import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.apache.commons.math3.stat.descriptive.moment.Variance;
 
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
+
 
 public class Sample {
     final List<Double> sample;
@@ -26,7 +24,6 @@ public class Sample {
     }
 
     private double calculateGeometricMean() {
-        System.out.println(stats.getGeometricMean());
         return stats.getGeometricMean();
     }
 

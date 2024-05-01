@@ -1,0 +1,39 @@
+JFDML JFormDesigner: "8.2.3.0.386" Java: "17.0.8" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :25:25:p, par l {comp chooseFileButton::l:::x, comp generateExcelButton::l:::x, comp sheetField::l:::x, comp chooseSheetNumberButton::l:::x}, space s:::p, par l {comp fileErrorLabel:::p::p, comp sheetErrorLabel:::p::p}, space :p:10:p}}"
+			"$verticalGroup": "par l {seq {par b {comp chooseFileButton::b:p:48:p, comp fileErrorLabel::b:p::p}, space s:::p, par b {comp chooseSheetNumberButton::b::54:x, comp sheetErrorLabel::b:p::p}, space s:::p, comp sheetField:::p::p, space s:::p, comp generateExcelButton:::p:43:p, space :p:34:p}}"
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "chooseFileButton"
+				"text": "Choose Excel file"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "chooseSheetNumberButton"
+				"text": "Choose sheet number"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "generateExcelButton"
+				"text": "Generate Excel file"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "sheetField"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "fileErrorLabel"
+				"text": "File isn't uploaded"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "sheetErrorLabel"
+				"text": "Sheet isn't choosen"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 125, 0 )
+			"size": new java.awt.Dimension( 350, 300 )
+		} )
+	}
+}

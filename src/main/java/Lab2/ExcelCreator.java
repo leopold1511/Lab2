@@ -29,9 +29,7 @@ public class ExcelCreator {
     private void writeSampleResults(Sheet sheet, List<Sample> samples) {
         Row headerRow = sheet.createRow(0);
         headerRow.createCell(0).setCellValue("Номер выборки");
-        String[] headers = {"Геометрическое среднее", "Арифметическое среднее", "Стандартное отклонение",
-                "Размах", "Количество элементов", "Коэффициент вариации", "Нижняя граница доверительного интервала",
-                "Верхняя граница доверительного интервала", "Дисперсия", "Минимальное значение", "Максимальное значение"};
+        String[] headers = {"Геометрическое среднее", "Арифметическое среднее", "Стандартное отклонение", "Размах", "Количество элементов", "Коэффициент вариации", "Нижняя граница доверительного интервала", "Верхняя граница доверительного интервала", "Дисперсия", "Минимальное значение", "Максимальное значение"};
         for (int i = 0; i < headers.length; i++) {
             headerRow.createCell(i + 1).setCellValue(headers[i]);
         }
@@ -42,7 +40,8 @@ public class ExcelCreator {
             row.createCell(0).setCellValue(sample.id);
             double[] results = sample.getResult();
             for (int i = 0; i < results.length; i++) {
-                row.createCell(i + 1).setCellValue(results[i]);
+                if (Double.isNaN(results[i])) row.createCell(i + 1).setCellValue("не сущ");
+                else row.createCell(i + 1).setCellValue(results[i]);
             }
         }
     }
