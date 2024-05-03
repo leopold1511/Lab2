@@ -40,13 +40,18 @@ public class Sample {
     }
 
     double calculateCovariance(List<Double> sample2) {
-        double[] array1 = sample.stream()
-                .mapToDouble(Double::doubleValue)
-                .toArray();
-        double[] array2 = sample2.stream()
-                .mapToDouble(Double::doubleValue)
-                .toArray();
-        return new Covariance().covariance(array1, array2);
+        try {
+            double[] array1 = sample.stream()
+                    .mapToDouble(Double::doubleValue)
+                    .toArray();
+            double[] array2 = sample2.stream()
+                    .mapToDouble(Double::doubleValue)
+                    .toArray();
+            return new Covariance().covariance(array1, array2);
+        }catch (Exception e){
+            e.printStackTrace();
+            return 0;
+        }
 
     }
 
