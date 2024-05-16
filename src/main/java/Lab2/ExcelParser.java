@@ -8,7 +8,6 @@ import java.util.Map;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 
@@ -29,12 +28,13 @@ public class ExcelParser {
         for (Row row : sheet) {
             int sampleNumber=1;
             for (Cell cell : row) {
-                if (cell.getCellType() == CellType.NUMERIC) {
+                if (cell.getCellType() == CellType.NUMERIC || cell.getCellType() == CellType.FORMULA) {
                     if (!data.containsKey(sampleNumber)) {
                         data.put(sampleNumber, new ArrayList<>());
                     }
                     data.get(sampleNumber).add(cell.getNumericCellValue());
                 }
+
                 sampleNumber++;
             }
         }
